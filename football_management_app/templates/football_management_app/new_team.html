@@ -1,0 +1,12 @@
+{% extends "football_management_app/base.html" %}
+
+{% block content %}
+  <p>Add a new team:</p>
+
+  <form action="{% url 'football_management_app:new_team' %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Add team</button>
+  </form>
+
+{% endblock content %}

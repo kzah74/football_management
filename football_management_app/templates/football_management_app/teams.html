@@ -1,0 +1,15 @@
+{% extends "football_management_app/base.html" %}
+
+{% block content %}
+
+  <p>Teams:</p>
+
+  <ul>
+    {% for team in teams %}
+      <li>{{ team }}</li>
+    {% empty %}
+      <li>No teams have been added yet.</li>
+    {% endfor %}
+  </ul>
+
+{% endblock content %}

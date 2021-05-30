@@ -1,0 +1,17 @@
+{% extends "football_management_app/base.html" %}
+
+{% block content %}
+
+  <p>Match Schedule:</p>
+
+  <ul>
+    {% for key,value in matches.items %}
+      <li> {{ key }}: {{value}} </li>
+    {% empty %}
+      <li>No schedule yet.</li>
+    {% endfor %}
+  </ul>
+
+{% endblock content %}
+
+print(matches)
