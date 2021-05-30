@@ -1,7 +1,5 @@
 import datetime
 
-# lst = ['Chelsea', 'Liverpool', 'Manchester United', 'Barcelona']
-
 def dates(lst):
     dates = []
     for x in range(len(lst)):
@@ -24,7 +22,6 @@ def distinct_pairs(lst):
     all_matches = all_pairs(lst)
     possible_dates = dates(all_matches)
     program_matches = {}
-    # print(possible_dates)
     while len(all_matches) > 0:
         teams_for_today = []
         matches_for_today = []
@@ -38,10 +35,6 @@ def distinct_pairs(lst):
                 teams_for_today.append(match[1])
         all_matches = matches_left_over
 
-        # print(possible_dates[0])
-        # print(matches_for_today)
         program_matches[possible_dates[0]] = matches_for_today
         del possible_dates[0]
     return program_matches
-
-    # print(program_matches)
