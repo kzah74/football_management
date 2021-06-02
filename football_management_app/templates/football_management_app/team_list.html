@@ -5,8 +5,8 @@
   <p>Teams:</p>
 
   <ul>
-    {% for team in teams %}
-      <li>{{ team }}</li>
+    {% for team in object_list %}
+      <li>{{ team.text }}</li>
     {% empty %}
       <li>No teams have been added yet.</li>
     {% endfor %}

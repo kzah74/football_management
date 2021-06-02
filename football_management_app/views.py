@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
+from django.views.generic import ListView
+from django.views.generic.edit import CreateView
 import datetime
 
 from .models import Team
-
-from .forms import TeamForm
 
 from .generating import distinct_pairs
 
@@ -13,28 +13,13 @@ def index(request):
     return render(request, 'football_management_app/index.html')
 
 
-def teams(request):
-    """Show all teams."""
-    teams = Team.objects.all()
-    context = {'teams': teams}
-    return render(request, 'football_management_app/teams.html', context)
+class TeamListView(ListView):
+    model = Team
 
 
-def new_team(request):
-    """Add a new team."""
-    if request.method != 'POST':
-        # No data submitted; create a blank form.
-        form = TeamForm()
-    else:
-        # POST data submitted; process data.
-        form = TeamForm(data=request.POST)
-        if form.is_valid(): 
-            form.save()
-            return redirect('football_management_app:teams')
-
-    # Display a blank or invalid form.
-    context = {'form': form}
-    return render(request, 'football_management_app/new_team.html', context)
+class TeamCreateView(CreateView):
+    model = Team
+    fields = ['text']
 
 
 def generate_matches(request):
