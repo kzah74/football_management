@@ -1,16 +1,15 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView
+from django.views import View
 import datetime
-
 from .models import Team
-
 from .generating import distinct_pairs
 
 
-def index(request):
-    """The home page for Football Management."""
-    return render(request, 'football_management_app/index.html')
+class IndexView(View):
+    def get(self, request):
+        return render(request, 'football_management_app/index.html')
 
 
 class TeamListView(ListView):
@@ -22,9 +21,9 @@ class TeamCreateView(CreateView):
     fields = ['text']
 
 
-def generate_matches(request):
-    """Generate button"""
-    return render(request, 'football_management_app/generate_matches.html')
+class GenerateMatchesView(View):
+    def get(self, request):
+        return render(request, 'football_management_app/generate_matches.html')
 
 
 def match_schedule(request):
