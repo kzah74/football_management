@@ -8,7 +8,6 @@ from . import views
 app_name = 'football_management_app'
 urlpatterns = [
     # Home page.
-    # path('', views.index, name='index'),
     path('', IndexView.as_view(), name='index'),
     # Page that shows all teams.
     path('teams/', TeamListView.as_view(), name='teams_list'),
