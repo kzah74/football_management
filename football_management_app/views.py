@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView
 from django.views import View
@@ -7,29 +7,19 @@ from .models import Team
 from .generating import distinct_pairs
 
 
-class IndexView(View):
-    def get(self, request):
-        return render(request, 'football_management_app/index.html')
-
-
 class TeamListView(ListView):
     model = Team
 
 
 class TeamCreateView(CreateView):
     model = Team
-    fields = ['text']
-
-
-class GenerateMatchesView(View):
-    def get(self, request):
-        return render(request, 'football_management_app/generate_matches.html')
+    fields = ['name']
 
 
 def match_schedule(request):
     """Generating the matches."""
     qs = Team.objects.all()
-    lst = [item.text for item in qs]
+    lst = [item.name for item in qs]
     matches = distinct_pairs(lst)
     context = {'matches': matches}
     print(matches)
@@ -39,7 +29,7 @@ def match_schedule(request):
 def match_list(request):
     """Show all teams."""
     qs = Team.objects.all()
-    lst = [item.text for item in qs]
+    lst = [item.name for item in qs]
     matches = distinct_pairs(lst)
     context = {'matches': matches}
     return render(request, 'football_management_app/match_list.html', context)
