@@ -1,27 +1,21 @@
+from .models import Match
 import datetime
 
-def dates(lst):
-    dates = []
-    for x in range(len(lst)):
-        dates.append((datetime.date.today() + datetime.timedelta(days=x)).strftime('%d-%m-%Y'))
-    del dates[0]
-    return dates
 
-
-def all_pairs(lst):
+def get_all_pairs(qs):
     index = 1
     pairs = []
-    for element1 in lst:
-        for element2 in lst[index:]:
+    for element1 in qs:
+        for element2 in qs[index:]:
             pair = (element1, element2)
             pairs.append(pair)
         index += 1
     return pairs
 
-def distinct_pairs(lst):
-    all_matches = all_pairs(lst)
-    possible_dates = dates(all_matches)
-    program_matches = {}
+
+def generate_matches(qs):
+    all_matches = get_all_pairs(qs)
+    date = datetime.date.today() + datetime.timedelta(days=1)
     while len(all_matches) > 0:
         teams_for_today = []
         matches_for_today = []
@@ -35,6 +29,12 @@ def distinct_pairs(lst):
                 teams_for_today.append(match[1])
         all_matches = matches_left_over
 
-        program_matches[possible_dates[0]] = matches_for_today
-        del possible_dates[0]
-    return program_matches
+        for pair in matches_for_today:
+            visitor, host = pair
+            visitor = pair[0]
+            host = pair[1]
+
+            match = Match(visitor=visitor, host=host, date=date)
+            match.save()
+        
+        date += datetime.timedelta(days=1)
