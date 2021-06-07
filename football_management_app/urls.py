@@ -1,9 +1,9 @@
 "Defines URL patterns for football_management_app."
 
 from django.urls import path
-from .views import TeamListView, TeamCreateView
+from .views import TeamListView, TeamCreateView, GenerateMatchesView, MatchScheduleListView, MatchesListView
 from django.views.generic import TemplateView
-from . import views
+
 
 app_name = 'football_management_app'
 urlpatterns = [
@@ -14,9 +14,9 @@ urlpatterns = [
     # Page for adding a new team.
     path('team/add/', TeamCreateView.as_view(), name='new_team'),
     # page for generate button.
-    path('generate_matches/', TemplateView.as_view(template_name='football_management_app/generate_matches.html'), name='generate_matches'),
+    path('generate_matches/', GenerateMatchesView.as_view(), name='generate_matches'),
     # Page for generating the matches.
-    path('match_schedule/', views.match_schedule, name='match_schedule'),
-    # # Page that shows all matches.
-    path('match_list/', views.match_list, name='match_list'),
+    path('match_schedule/', MatchScheduleListView.as_view(), name='match_schedule'),
+    # Page that shows all matches.
+    path('match_list/', MatchesListView.as_view(), name='match_list'),
 ]

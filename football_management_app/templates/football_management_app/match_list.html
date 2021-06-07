@@ -5,8 +5,8 @@
   <p>Matches:</p>
 
   <ul>
-    {% for key,value in matches.items %}
-      <li> {{value}} </li>
+    {% for match in object_list %}
+      <li> {{match.date}}: {{match.visitor}} - {{match.host}} </li>
     {% empty %}
       <li>No matches have been generated yet.</li>
     {% endfor %}

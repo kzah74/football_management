@@ -5,13 +5,11 @@
   <p>Match Schedule:</p>
 
   <ul>
-    {% for key,value in matches.items %}
-      <li> {{ key }}: {{value}} </li>
+    {% for match in object_list %}
+      <li> {{match.date}}: {{match.visitor}} - {{match.host}} </li>
     {% empty %}
-      <li>No schedule yet.</li>
+      <li>No matches have been generated yet.</li>
     {% endfor %}
   </ul>
 
 {% endblock content %}
-
-print(matches)

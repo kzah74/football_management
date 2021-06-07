@@ -1,16 +1,9 @@
 {% extends "football_management_app/base.html" %}
 
 {% block content %}
-  <html>
-   
-    <body>
-       
-     <a href="{% url 'football_management_app:match_schedule' %}">  
-       <button>Generate the matches</button> 
-     </a>
-   
-    </body>
-   
-  </html>
+  <form method='post'>
+    {% csrf_token %}
+    <button name="submit">Generate matches</button>
+  </form>
 
 {% endblock content %}
