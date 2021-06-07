@@ -6,7 +6,8 @@
 
   <ul>
     {% for team in object_list %}
-      <li>{{ team.name }}</li>
+      <li>
+        <a href="{% url 'football_management_app:team_update' team.id %}">{{ team }}</a>
     {% empty %}
       <li>No teams have been added yet.</li>
     {% endfor %}

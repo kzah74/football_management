@@ -1,6 +1,6 @@
 from django.shortcuts import redirect
 from django.views.generic import TemplateView, ListView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from .models import Team, Match
 from .generating import generate_matches
 
@@ -27,3 +27,10 @@ class MatchScheduleListView(ListView):
 
 class MatchesListView(ListView):
     model = Match
+
+
+class TeamUpdateView(UpdateView):
+    model = Team
+    fields = ['name']
+
+    template_name = 'football_management_app/team_update.html'
