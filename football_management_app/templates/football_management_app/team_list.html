@@ -8,6 +8,11 @@
     {% for team in object_list %}
       <li>
         <a href="{% url 'football_management_app:team_update' team.id %}">{{ team }}</a>
+          <form action="{% url 'football_management_app:team_delete' team.id %}" method='post'>
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button name="submit">Delete team</button>
+          </form>
     {% empty %}
       <li>No teams have been added yet.</li>
     {% endfor %}

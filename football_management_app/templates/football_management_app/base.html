@@ -1,10 +1,17 @@
 <p>
   <a href="{% url 'football_management_app:index' %}">Football Management</a> -
+  {% if user.is_authenticated %}
+    Hello, {{ user.username }}.
+    <a href="{% url 'users:logout' %}">Log out</a>
+  {% else %}
+    <a href="{% url 'users:register' %}">Register</a> -
+    <a href="{% url 'users:login' %}">Log in</a>
+  {% endif %} -
   <a href="{% url 'football_management_app:teams_list' %}">Teams</a> -
+
   <a href="{% url 'football_management_app:generate_matches' %}">Generate Matches</a> -
   <a href="{% url 'football_management_app:match_schedule' %}">Match Schedule</a> -
-  <a href="{% url 'football_management_app:match_list' %}">Match List</a> 
-  {% comment %} <a href="{% url 'football_management_app:team_update' %}">Update Team</a> {% endcomment %}
+  <a href="{% url 'football_management_app:match_list' %}">Match List</a>
 </p>
 
 {% block content %}{% endblock content %}

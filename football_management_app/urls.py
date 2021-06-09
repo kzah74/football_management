@@ -1,7 +1,7 @@
 "Defines URL patterns for football_management_app."
 
 from django.urls import path
-from .views import TeamListView, TeamCreateView, GenerateMatchesView, MatchScheduleListView, MatchesListView, TeamUpdateView
+from .views import TeamListView, TeamCreateView, GenerateMatchesView, MatchScheduleListView, MatchesListView, TeamUpdateView, TeamDeleteView
 from django.views.generic import TemplateView
 
 
@@ -21,4 +21,6 @@ urlpatterns = [
     path('match_list/', MatchesListView.as_view(), name='match_list'),
     # Detail page.
     path('team/<int:pk>/', TeamUpdateView.as_view(), name='team_update'),
+    # Delete Team.
+    path('team/<int:pk>/delete/', TeamDeleteView.as_view(), name='team_delete'),
 ]
