@@ -40,6 +40,8 @@ class TeamUpdateView(UpdateView):
     model = Team
     fields = ['name']
 
+    success_url = reverse_lazy('football_management_app:teams_list')
+
     template_name = 'football_management_app/team_update.html'
 
 
