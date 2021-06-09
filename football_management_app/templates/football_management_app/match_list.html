@@ -6,7 +6,7 @@
 
   <ul>
     {% for match in object_list %}
-      <li> {{match.date}}: {{match.visitor}} - {{match.host}} </li>
+      <li> {{match.visitor}} - {{match.host}} </li>
     {% empty %}
       <li>No matches have been generated yet.</li>
     {% endfor %}

@@ -21,6 +21,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # My apps
     'football_management_app',
+    'users',
 
     # Default django apps
     'django.contrib.admin',
