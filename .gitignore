@@ -196,7 +196,6 @@ FakesAssemblies/
 *.opt
 
 fm_env
-migrations
 __pycache__/
 db.sqlite3
 media
