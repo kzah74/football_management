@@ -1,0 +1,18 @@
+{% extends "football_management_app/base.html" %}
+
+{% block content %}
+
+  <p>Players:</p>
+
+  <ul>
+    {% for player in object_list %}
+      <li> 
+      {{ player.name }} : {{ player.description }}. He plays with: {{ player.number }}.
+      <img src="{{ player.photo.url }}">
+      </li>
+    {% empty %}
+      <li>No players have been added yet.</li>
+    {% endfor %}
+  </ul>
+
+{% endblock content %}
