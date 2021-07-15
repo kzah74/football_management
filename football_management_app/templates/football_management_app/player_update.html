@@ -1,9 +1,13 @@
 {% extends "football_management_app/base.html" %}
 
 {% block content %}
+
+  <p>Edit player:</p>
+
   <form method='post'>
     {% csrf_token %}
-    <button name="submit" class="button">Generate matches</button>
+    {{ form.as_p }}
+    <button name="submit">Save changes</button>
   </form>
 
 {% endblock content %}

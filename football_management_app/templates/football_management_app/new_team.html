@@ -6,7 +6,7 @@
   <form action="{% url 'football_management_app:new_team' %}" method='post'>
     {% csrf_token %}
     {{ form.as_p }}
-    <button name="submit">Add team</button>
+    <button name="submit" class="button">Add team</button>
   </form>
 
 {% endblock content %}

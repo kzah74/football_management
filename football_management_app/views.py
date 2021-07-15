@@ -1,7 +1,7 @@
 from django.shortcuts import redirect
 from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
-from .models import Player, Team, Match
+from .models import Team, Match, Player
 from .generating import generate_matches
 from django.urls import reverse_lazy
 from .forms import PlayerForm
@@ -47,6 +47,7 @@ class TeamDeleteView(DeleteView):
 
 
 class PlayersListView(ListView):
+    paginate_by = 2
     model = Player
     template_name = 'football_management_app/player_list.html'
 
@@ -59,3 +60,15 @@ class PlayerCreateView(FormView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
+
+
+class PlayerUpdateView(UpdateView):
+    model = Player
+    fields = ['name', 'description', 'number', 'photo']
+    success_url = reverse_lazy('football_management_app:players_list')
+    template_name = 'football_management_app/player_update.html'
+
+
+class PlayerDeleteView(DeleteView):
+    model = Player
+    success_url = reverse_lazy('football_management_app:players_list')

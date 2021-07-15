@@ -1,7 +1,6 @@
 {% extends "football_management_app/base.html" %}
 
 {% block content %}
-
   <p>Teams:</p>
 
   <ul>
@@ -11,11 +10,10 @@
           <form action="{% url 'football_management_app:team_delete' team.id %}" method='post'>
           {% csrf_token %}
           {{ form.as_p }}
-          <button name="submit">Delete team</button>
+          <button name="submit" class="button">Delete team</button>
           </form>
     {% empty %}
       <li>No teams have been added yet.</li>
     {% endfor %}
   </ul>
-
 {% endblock content %}

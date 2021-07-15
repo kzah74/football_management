@@ -1,9 +1,25 @@
 {% extends "football_management_app/base.html" %}
 
 {% block content %}
+<div class="header">
+  <p>The Football Management application allows users to create a database of desired football teams, manage them and schedule their matches. Adding a new team is made easy - only with a click of a button.<br>
+  The app lets users generate match schedules, by randomly picking the opponents from the available list, making sure that each team is scheduled for a game only once a day.</p>
+  <p> <strong>User guide:</strong><br>
+    - To add a new team to the database click “Add a new team” under “Football Management”.<br>
+    - Under “Teams” the user can see the list of all available teams at the moment.<br>
+    - In the “Generate Matches” tab the user can create a random match schedule by clicking the button.<br>
+    - Under “Match schedule” the user can see the already generated schedule.<br>
+    - Summary of all planed games can be found under “Match list”.
+  </p>
+  <p> <strong>Developers guide (Prerequisites):</strong><br>
+    - Python<br>
+    - Django
+  </p>
+</div>
+  <a href="team/add/" style="background-color: #333; color: #f2f2f2; padding: 14px 25px; text-align: center; text-decoration: 
+  none; display: inline-block;">Add a new team</a>
 
-  <p>Football Management helps you organize the matches.</p>
+<address style="text-align: right; margin-top:100px;">The product is web-based, no additional installation is required.</address>
 
-  <a href="{% url 'football_management_app:new_team' %}">Add a new team</a>
 
 {% endblock content %}
