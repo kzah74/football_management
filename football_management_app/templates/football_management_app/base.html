@@ -1,18 +1,80 @@
-<p>
-  <a href="{% url 'football_management_app:index' %}">Football Management</a> -
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial;
+    padding: 10px;
+    background: #f1f1f1;
+  }
+  
+  .header {
+    padding: 30px;
+    text-align: center;
+  }
+  
+  .header h1 {
+    font-size: 50px;
+  }
+  
+  .header p{
+    text-align: left;
+  }
+  
+  .topnav {
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .topnav a:hover {
+    background-color: white;
+    color: black;
+  }
+  
+  .button {
+    background-color: #333; 
+    color: #f2f2f2; 
+    padding: 10px 20px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block;
+  }
+</style>
+</head>
+
+<body>
+<div class="header">
+  <h1>Football Management Application</h1>
+</div>
+
+<div class="topnav">
+  <a href="{% url 'football_management_app:index' %}">Home</a> 
   {% if user.is_authenticated %}
-    Hello, {{ user.username }}.
-    <a href="{% url 'users:logout' %}">Log out</a>
+    <a href="{% url 'users:logout' %}" style="float:right">Log out</a>
   {% else %}
-    <a href="{% url 'users:register' %}">Register</a> -
-    <a href="{% url 'users:login' %}">Log in</a>
-  {% endif %} -
-  <a href="{% url 'football_management_app:teams_list' %}">Teams</a> -
-  <a href="{% url 'football_management_app:players_list' %}">Players</a> -
-  <a href="{% url 'football_management_app:new_player' %}">Add new player</a> -
-  <a href="{% url 'football_management_app:generate_matches' %}">Generate Matches</a> -
-  <a href="{% url 'football_management_app:match_schedule' %}">Match Schedule</a> -
+    <a href="{% url 'users:register' %}" style="float:right">Register</a> 
+    <a href="{% url 'users:login' %}" style="float:right">Log in</a>
+  {% endif %}
+  <a href="{% url 'football_management_app:teams_list' %}">Teams</a> 
+  <a href="{% url 'football_management_app:players_list' %}">Players</a> 
+  <a href="{% url 'football_management_app:new_player' %}">Add new player</a> 
+  <a href="{% url 'football_management_app:generate_matches' %}">Generate Matches</a> 
+  <a href="{% url 'football_management_app:match_schedule' %}">Match Schedule</a> 
   <a href="{% url 'football_management_app:match_list' %}">Match List</a>
-</p>
+</div>
 
 {% block content %}{% endblock content %}
+</body>
